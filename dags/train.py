@@ -1,6 +1,7 @@
 import os
 import sys
 from datetime import timedelta
+import mlflow
 
 from airflow.decorators import dag, task
 from sqlalchemy_utils.types.enriched_datetime.pendulum_date import pendulum
@@ -27,6 +28,5 @@ def train_model():
 
     feature_path = prepare_features_task()
     train_model_task(feature_path)
-
 
 train_model_dag = train_model()
